@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "erode", "erode\erode.vcxproj", "{203BFCE0-5CC5-4567-95AD-492217FA125D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{203BFCE0-5CC5-4567-95AD-492217FA125D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{203BFCE0-5CC5-4567-95AD-492217FA125D}.Debug|Win32.Build.0 = Debug|Win32
+		{203BFCE0-5CC5-4567-95AD-492217FA125D}.Release|Win32.ActiveCfg = Release|Win32
+		{203BFCE0-5CC5-4567-95AD-492217FA125D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
