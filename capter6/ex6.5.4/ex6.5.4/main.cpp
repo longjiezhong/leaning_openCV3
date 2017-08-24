@@ -21,9 +21,11 @@ static void onMouse(int event, int x, int y, int, void*)
 	Point seed = Point(x, y);
 	int LowDifference = g_nFillMode == 0 ? 0 : g_nLowDifference;
 	int UpDifference = g_nFillMode == 0 ? 0 : g_nUpDifference;
+
 	int flags = g_nConnectivity + (g_nNewMackVal << 8) + (g_nFillMode
 		== 1 ? CV_FLOODFILL_FIXED_RANGE : 0);
-	int b = (unsigned)theRNG() & 255;
+
+	int b = (unsigned)theRNG() & 255;		//产生的新像素颜色是随机的
 	int g = (unsigned)theRNG() & 255;
 	int r = (unsigned)theRNG() & 255;
 	Rect ccomp;
@@ -38,12 +40,12 @@ static void onMouse(int event, int x, int y, int, void*)
 		threshold(g_maskImage, g_maskImage, 1, 128, CV_THRESH_BINARY);
 		area = floodFill(dst,				//被处理的图像
 			g_maskImage,					//掩膜；
-			seed, 
-			newVal, 
-			&ccomp, 
-			Scalar(LowDifference, LowDifference, LowDifference),
-			Scalar(UpDifference, UpDifference, UpDifference), 
-			flags);
+			seed,							//漫水填充算法的起点
+			newVal,							//像素被填充的值
+			&ccomp,							//设置重绘区域最小边界矩形区域
+			Scalar(LowDifference, LowDifference, LowDifference),	//重绘区域负差最大值
+			Scalar(UpDifference, UpDifference, UpDifference),		//重绘区域正查最大值
+			flags);							//操作标志符
 		imshow( "mask", g_maskImage );
 	}
 	else
@@ -61,6 +63,7 @@ int main(int argc, char** argv)
 	g_srcImage = imread("1.png", 1);
 	if( !g_srcImage.data )
 		cout << "读取图片错误！" << endl;
+
 	g_srcImage.copyTo(g_dstImage);
 	cvtColor(g_srcImage, g_grayImage, COLOR_RGB2GRAY);
 	g_maskImage.create(g_srcImage.rows+2, g_srcImage.cols+2, CV_8UC1);
@@ -101,6 +104,7 @@ int main(int argc, char** argv)
 			}
 			break;
 
+			//按键2被按下，显示/隐藏掩模窗口
 		case '2' :
 			if(g_bUseMask)
 			{
