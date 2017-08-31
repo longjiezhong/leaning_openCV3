@@ -1,0 +1,25 @@
+图像轮廓与图像分割修复
+1 查找并绘制轮廓
+  findContours(), 
+  drawContours()
+  
+2  寻找凸包
+  convexHull()
+  
+3 使用多边形将轮廓包围
+  coundingRect()，矩形边界
+  minAreaRect()，最小矩形包围
+  minEnclosingCircle()，最小圆包围
+  fitEllipse()，椭圆拟合
+  
+4 图像的矩
+  moments()，获取矩形的矩
+  contourArea()，计算轮廓面积
+  arcLenght()，计算轮廓或曲线长度
+  
+5 分水岭算法
+  watershed()
+  
+6 图像修复
+  inpain()
+  
